@@ -1,8 +1,11 @@
 import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
 
-async function parseCsv(): Promise<string[]> {
-	const filePath = './src/sorted_dictionary.csv'; // includes 'src' because 'bun dev' runs from the root directory
+const dictionaryPath = './src/sorted_dictionary.csv'; // includes 'src' because 'bun dev' runs from the root directory
+const winningWordsPath = './src/winning_words.csv'; // includes 'src' because 'bun dev' runs from the root directory
+
+async function parseCsv(path: string): Promise<string[]> {
+	const filePath = path;
 	const file = Bun.file(filePath);
 	const csvText = await file.text();
 	const lines = csvText.split('\n').filter(line => line.trim() !== '');
@@ -10,15 +13,14 @@ async function parseCsv(): Promise<string[]> {
 }
 
 //Top-level await
-let dictionary = await parseCsv();
+let dictionary = await parseCsv(dictionaryPath);
+let winningWords = await parseCsv(winningWordsPath);
 
 console.log('CSV parsing has completed.');
 
-const words = ['motyka', 'królewicz', 'walizka'];
-
 const randomWord = () => {
-	const index = Math.floor(Math.random() * words.length);
-	const chosenWord = words[index];
+	const index = Math.floor(Math.random() * winningWords.length);
+	const chosenWord = winningWords[index];
 	return chosenWord;
 };
 
