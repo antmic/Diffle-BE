@@ -7,9 +7,12 @@
   },
   "dependencies": {
     "csv-parser": "^3.0.0",
-    "elysia": "latest"
+    "csv-writer": "^1.6.0",
+    "elysia": "latest",
+    "he": "^1.2.0"
   },
   "devDependencies": {
+    "@types/he": "^1.2.3",
     "bun-types": "latest"
   },
   "module": "src/index.js"
