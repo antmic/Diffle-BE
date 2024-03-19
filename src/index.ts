@@ -2,7 +2,7 @@ import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
 
 const dictionaryPath = './src/sorted_dictionary.csv'; // includes 'src' because 'bun dev' runs from the root directory
-const winningWordsPath = './src/winning_words.csv'; // includes 'src' because 'bun dev' runs from the root directory
+const winningWordsPath = './src/sorted_winning_words.csv'; // includes 'src' because 'bun dev' runs from the root directory
 
 async function parseCsv(path: string): Promise<string[]> {
 	const filePath = path;
@@ -21,6 +21,7 @@ console.log('CSV parsing has completed.');
 const randomWord = () => {
 	const index = Math.floor(Math.random() * winningWords.length);
 	const chosenWord = winningWords[index];
+	console.log('chosenWord: ', chosenWord);
 	return chosenWord;
 };
 
