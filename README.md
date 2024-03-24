@@ -1,15 +1,7 @@
-# Elysia with Bun runtime
+This is a simple web server for a custom Polish implementation of the Diffle game.
+The server responds to two requests:
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+1. a /getword GET request with a random word selected from a list of winning words;
+2. a /checkword POST request with a true/false message depending on whether the word sent in the request is in the dictionary.
 
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
-
-Open http://localhost:3000/ with your browser to see the result.
+You can try the game at https://antmic.github.io/Diffly/
