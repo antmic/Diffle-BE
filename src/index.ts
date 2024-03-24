@@ -466,7 +466,7 @@ app.get('/getword', async (req: Request, res: Response) => {
 });
 
 app.post('/checkword', async (req: Request, res: Response) => {
-	const result = await checkWord(req.body);
+	const result = await checkWord(req.body.word);
 	res.json({ message: result });
 });
 
