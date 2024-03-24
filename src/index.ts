@@ -394,7 +394,7 @@ const getCSVValueAtIndex = async (filePath: string, index: number): Promise<stri
 	return new Promise((resolve, reject) => {
 		let count = 0;
 		fs.createReadStream(filePath)
-			.pipe(csv())
+			.pipe(csv({ headers: false }))
 			.on('data', row => {
 				if (count === index) {
 					resolve(Object.values(row)[0] as string);
@@ -410,9 +410,9 @@ const getCSVSpecificValue = async (filePath: string, value: string): Promise<boo
 	return new Promise((resolve, reject) => {
 		let found = false;
 		fs.createReadStream(filePath)
-			.pipe(csv())
+			.pipe(csv({ headers: false }))
 			.on('data', row => {
-				if ((Object.values(row)[0] as string) === value) {
+				if ((row[0] as string) === value) {
 					found = true;
 					resolve(true);
 				}
