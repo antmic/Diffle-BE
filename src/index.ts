@@ -1,5 +1,4 @@
-import { Elysia } from 'elysia';
-import { cors } from '@elysiajs/cors';
+//import { Elysia } from 'elysia';
 
 const dictionaryPath = './src/dictionary/';
 const winningWordsPath = './src/winning_words/';
@@ -453,16 +452,24 @@ function binarySearch(arr: string[], target: string): boolean {
 	return false;
 }
 
-const app = new Elysia();
-app.use(cors({ origin: '*' }));
-app.get('/getword', async () => {
-	const result = await randomWord();
-	return { word: result };
-});
-app.post('/checkword', async req => {
-	const result = await checkWord(req.body as string);
-	return { message: result };
-});
-app.listen(3000);
+const express = require('express');
+import { Request, Response } from 'express';
+const cors = require('cors');
+const app = express();
 
-console.log(`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`);
+app.use(cors());
+app.use(express.json());
+
+app.get('/getword', async (req: Request, res: Response) => {
+	const result = await randomWord();
+	res.json({ word: result });
+});
+
+app.post('/checkword', async (req: Request, res: Response) => {
+	const result = await checkWord(req.body);
+	res.json({ message: result });
+});
+
+app.listen(3000, () => {
+	console.log('Server is running on port 3000');
+});
