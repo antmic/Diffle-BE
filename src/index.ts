@@ -454,11 +454,6 @@ function binarySearch(arr: string[], target: string): boolean {
 }
 
 const app = new Elysia();
-app.use(
-	cors({
-		origin: true, // Allow any origin
-	})
-);
 app.get('/getword', async () => {
 	const result = await randomWord();
 	return { word: result };
