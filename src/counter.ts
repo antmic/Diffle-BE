@@ -6,6 +6,11 @@ const path = './src/winning_words';
 // get names of all files in the directory
 let files = fs.readdirSync(path);
 
+let dictionaryFiles = fs.readdirSync('./src/dictionary');
+// sort the files alphabetically with localCompare
+dictionaryFiles.sort((a, b) => a.localeCompare(b));
+console.log(dictionaryFiles);
+
 // Read the CSV file and count the number of words in each file
 async function countWords(file: string): Promise<[string, number]> {
 	let count = 1;
@@ -414,7 +419,7 @@ winningWordsFiles.forEach((value, key) => {
 });
 
 winningWords.forEach((value, key) => {
-	console.log(`[[${value[0]},${value[1]}],${value[2]},'${key}'],`);
+	//console.log(`[[${value[0]},${value[1]}],${value[2]},'${key}'],`);
 });
 
 //let randomNum = +Math.random().toFixed(15);
