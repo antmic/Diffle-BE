@@ -7,8 +7,7 @@ const path = './src/winning_words';
 let files = fs.readdirSync(path);
 
 let dictionaryFiles = fs.readdirSync('./src/dictionary');
-// sort the files alphabetically with localCompare
-dictionaryFiles.sort((a, b) => a.localeCompare(b));
+dictionaryFiles.sort();
 console.log(dictionaryFiles);
 
 // Read the CSV file and count the number of words in each file
