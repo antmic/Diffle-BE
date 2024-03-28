@@ -1001,7 +1001,6 @@ const binarySearchWinningWordFile = (arr: [[number, number], number, string][], 
 const checkWord = async (word: string): Promise<boolean> => {
 	const fileName = word.slice(0, 2) + '.csv';
 	let result = false;
-	console.log(binarySearch(dictionaryFiles, fileName));
 	if (binarySearch(dictionaryFiles, fileName)) {
 		result = await getCSVSpecificValue(dictionaryPath + fileName, word);
 	}
